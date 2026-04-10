@@ -1,0 +1,35 @@
+# Algopilot AI quantitative terminal
+# Root .gitignore
+
+# Dependencies
+node_modules/
+backend/venv/
+backend/__pycache__/
+frontend/.next/
+frontend/extracted_ui/
+
+# Secrets (DANGER: Never commit these)
+.env
+.env.local
+backend/.env
+frontend/.env.local
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+!firebase.json
+algopilot-*.json
+
+# Databases
+*.db
+*.sqlite3
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# OS files
+.DS_Store
+Thumbs.db
