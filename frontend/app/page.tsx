@@ -163,7 +163,7 @@ export default function Dashboard() {
         // Fetch the real bot wallet address from the backend
         let generatedWallet = "";
         try {
-          const API_URL = "https://algo-trendai.onrender.com";
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
           const walletRes = await fetch(`${API_URL}/api/wallet`);
           if (walletRes.ok) {
             const walletData = await walletRes.json();

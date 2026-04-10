@@ -64,7 +64,7 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
   // Fetch real on-chain balance from backend
   const fetchLiveBalance = async () => {
     try {
-      const API_URL = "https://algo-trendai.onrender.com";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
       const res = await fetch(`${API_URL}/api/balance`);
       if (res.ok) {
         const data = await res.json();
@@ -84,7 +84,7 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
     if (!walletAddress) return;
     setLoading(true);
     try {
-      const API_URL = "https://algo-trendai.onrender.com";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
       const res = await fetch(`${API_URL}/api/ai-decision`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -139,7 +139,7 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
     executingRef.current = true;
     setExecuting(true);
     try {
-      const API_URL = "https://algo-trendai.onrender.com";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
       const res = await fetch(`${API_URL}/api/trade`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
