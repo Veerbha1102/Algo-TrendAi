@@ -59,7 +59,7 @@ export function ChatPanel({ walletAddress, userId }: { walletAddress: string, us
         console.warn("Could not save to db, ephemeral mode:", err);
       }
 
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const API_URL = "https://algo-trendai.onrender.com";
       const response = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

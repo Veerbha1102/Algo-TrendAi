@@ -27,7 +27,7 @@ export function WalletConnect({ earnedTrnd = 0 }: { earnedTrnd?: number }) {
   const [trndBalance, setTrndBalance] = useState<number | null>(null);
 
   const isConnected = !!accountAddress;
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  const API_URL = "https://algo-trendai.onrender.com";
 
   // ── Check TRND opt-in status whenever wallet connects ─────────
   const checkTrndStatus = useCallback(async (addr: string) => {
