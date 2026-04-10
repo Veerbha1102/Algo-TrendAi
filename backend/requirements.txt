@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+py-algorand-sdk
+google-generativeai
+python-dotenv
+requests
+firebase-admin
+apscheduler
+yfinance
