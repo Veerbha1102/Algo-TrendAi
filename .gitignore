@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.env
+.venv/
+venv/
+env/
+
+# Firebase service account (NEVER commit this)
+*firebase-adminsdk*.json
+firebase-service-account.json
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
