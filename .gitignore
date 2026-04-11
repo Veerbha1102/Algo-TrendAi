@@ -1,36 +1,37 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-.env
-*.env
-.venv/
-venv/
-env/
+# Algopilot AI quantitative terminal
+# Root .gitignore
 
-# Firebase service account (NEVER commit this)
-*firebase-adminsdk*.json
-firebase-service-account.json
-
-# Node / Next.js
+# Dependencies
 node_modules/
-.next/
-out/
-.vercel/
+backend/venv/
+backend/__pycache__/
+frontend/.next/
+frontend/extracted_ui/
 
-# Build artifacts
-dist/
-build/
-*.egg-info/
+# Secrets (DANGER: Never commit these)
+.env
+.env.local
+backend/.env
+frontend/.env.local
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+!firebase.json
+algopilot-*.json
 
-# OS
+# Databases
+*.db
+*.sqlite3
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# OS files
 .DS_Store
 Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Logs
-*.log
-npm-debug.log*
+__pycache__/
+.env
