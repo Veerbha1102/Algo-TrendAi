@@ -1,6 +1,7 @@
 from algosdk import account, mnemonic, transaction
 from algosdk.v2client import algod
 import os
+import time
 
 ALGOD_ADDRESS = os.environ.get("ALGOD_URL", "https://testnet-api.algonode.cloud")
 ALGOD_TOKEN = os.environ.get("ALGOD_TOKEN", "")
@@ -47,7 +48,7 @@ def execute_trade(action: str, amount_algo: float, receiver_address: str):
             sp=params,
             receiver=target,
             amt=amount_microalgo,
-            note=f"AlgoPilot AI Autonomous Trade: {action} {amount_algo} ALGO".encode()
+            note=f"AlgoPilot:{action}:{amount_algo}ALGO:ts={time.time_ns()}".encode()
         )
 
         signed_txn = unsigned_txn.sign(bot_pk)

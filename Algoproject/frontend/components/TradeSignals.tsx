@@ -19,6 +19,7 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
   const [cooldownRemaining, setCooldownRemaining] = useState<number>(0);
   const [liveBalance, setLiveBalance] = useState<number | null>(null);
   const executingRef = useRef(false);
+  const lastExecutedSignalRef = useRef<string | null>(null); // tracks the signal action we last acted on
 
   const currentAsset = activeAsset || "ALGOUSD";
 
@@ -125,7 +126,9 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
       signal &&
       autopilot &&
       signal.action !== "HOLD" &&
-      !executingRef.current
+      !executingRef.current &&
+      // Only execute if this signal hasn't already been acted on
+      lastExecutedSignalRef.current !== `${signal.action}-${signal.confidence}`
     ) {
       executeTrade();
     }
@@ -159,6 +162,12 @@ export function TradeSignals({ walletAddress, balance, userId, activeAsset, user
 
       if (res.ok) {
         const tradeTimestamp = new Date();
+
+        // Mark this signal as executed so the watcher can't re-fire it
+        lastExecutedSignalRef.current = signal ? `${signal.action}-${signal.confidence}` : manualAction || null;
+
+        // Clear signal so the autonomy watcher won't re-trigger on the same signal
+        setSignal(null);
 
         // Write trade to ledger (include AI brain metadata for the AI Brain Log view)
         await addDoc(collection(db, `portfolios/${userId}/trades`), {
